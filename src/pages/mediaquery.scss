@@ -1,0 +1,44 @@
+@media screen and (max-width: 810px) {
+  .generalnav {
+    visibility: hidden;
+    width: 15%;
+  }
+  .container {
+    display: flex;
+    justify-content: space-around;
+  }
+  .phonenav {
+    display: block;
+  }
+  .BlogCard {
+    width: 45vmax;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    max-width: 100%;
+  }
+  .BlogCard {
+    width: 100%;
+  }
+  .Blog-Details {
+    img {
+      height: 45vh;
+      object-fit: contain;
+      box-shadow: 1px 1px 4px rgb(89, 89, 89);
+    }
+  }
+  .post {
+    height: 87vh;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    min-width: none;
+    form {
+      width: 80%;
+    }
+  }
+  .update {
+  }
+}

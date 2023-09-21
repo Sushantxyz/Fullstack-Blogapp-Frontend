@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 3%;
+  font-family: "Dancing Script", cursive;
+  font-size: 1.5rem;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  height: 4rem;
+  z-index: 999;
+  cursor: pointer;
+  box-shadow: 0px 15px 10px -15px #111;
+  .logo {
+    font-size: 2rem;
+  }
+  > nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  > nav ul {
+    padding: 0 1vmax;
+    font-size: 1.5rem;
+    transition: 0.1s ease;
+    color: black;
+    &:hover {
+      background-color: black;
+      color: white;
+      border-radius: 10px;
+    }
+  }
+
+  .nav-auth {
+    display: flex;
+  }
+  .nav-login {
+    margin-right: 1.5rem;
+  }
+}
+
+.profile {
+  cursor: pointer;
+}
+
+.profile-details {
+  position: absolute;
+  top: 6rem;
+  right: 2vw;
+  width: 13rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 4px;
+  border-radius: 20px;
+  ul {
+    list-style: none;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.profile-pic {
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease;
+  &:hover {
+    transform: scale(1.2);
+  }
+  > img {
+    padding-right: 1rem;
+    width: 80px;
+    border-radius: 50%;
+  }
+  > i {
+    font-size: 2rem;
+  }
+}
+
+.phonenav {
+  display: none;
+}
+
+.nav {
+  font: 500 1.2rem "Popins";
+  padding: 0 0.5rem;
+  color: black;
+  transition: 0.2s ease;
+
+  &:hover {
+    border-radius: 15px;
+    background-color: rgb(185, 182, 182);
+  }
+  > i {
+    font-size: 1.2rem;
+    margin-left: 0;
+    margin-right: 1rem;
+    padding: 0.8rem 0;
+  }
+  button {
+    font: 500 1.2rem "Popins";
+    border: none;
+    background-color: white;
+    outline: none;
+  }
+  Link {
+    font: 500 1.2rem "Popins";
+  }
+}

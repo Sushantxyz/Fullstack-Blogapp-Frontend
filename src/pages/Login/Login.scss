@@ -1,0 +1,60 @@
+.login{
+    width: 100%;
+    height: calc(100vh - 6rem);
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+    background-size: cover;
+    form{
+        min-width: 20%;
+        min-height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        box-shadow: 2px 2px 10px gray;
+        background-color: white;
+        border-radius: 10px;
+        input{
+            padding-block: 1rem;
+            border-radius: 10px;
+            box-shadow: 0px 0px 4px black;
+            font-family: 'Raleway', sans-serif;
+            width: 15rem;
+            margin: 1rem;
+            padding-inline: 0.5rem;
+            /* border-radius: 10px; */
+            outline: none;
+            font-size: 1rem;
+            border: none;
+        }
+        label{
+            font: 500 1.5rem 'Raleway';
+            font-family: 'Raleway', sans-serif;
+            width: 15rem;
+            margin: 1rem;
+            padding-inline: 0.5rem;
+            outline: none;
+            font-size: 1rem;
+            border: none;
+        }
+        button{
+            cursor: pointer;
+            padding-block: 1rem;
+            box-shadow: 0px 0px 4px black;
+            border-radius: 10px;
+            font-family: 'Raleway', sans-serif;
+            width: 15rem;
+            margin: 1rem;
+            padding-inline: 0.5rem;
+            outline: none;
+            font-size: 1rem;
+            border: none;
+        }
+        
+    }
+}
+ 

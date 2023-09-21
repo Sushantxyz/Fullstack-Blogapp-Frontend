@@ -1,0 +1,87 @@
+.Blog-Details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2rem 1rem;
+  img {
+    height: 60vh;
+    object-fit: contain;
+    box-shadow: 1px 1px 4px rgb(89, 89, 89);
+  }
+  p {
+    padding: 0.5rem;
+    > span {
+      font-family: "Popins", sans-serif;
+      text-decoration:underline;
+    }
+  }
+  h2 {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Poppins", sans-serif;
+    div button {
+      border: none;
+      background-color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.fa-regular {
+  padding: 0 0.5rem;
+}
+
+.fa-trash-can {
+  color: rgb(172, 2, 2);
+}
+
+.fa-pen-to-square {
+  color: rgb(0, 116, 0);
+}
+
+.auth,
+.posttime {
+  font-weight: 600;
+}
+
+.updatebutton {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+  color: white;
+  background-color: rgb(39, 125, 39);
+  outline: none;
+  margin-top: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  &:hover {
+    background-color: rgb(15, 103, 15);
+  }
+}
+
+.titleinput {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font: 500 1.5rem "Popins", cursive;
+}
+
+.descriptioninput {
+  width: 100%;
+  padding: 0.5rem;
+  height: 8rem;
+  // font-family: "Popins", sans-serif;
+  border: none;
+  font-size: 1rem;
+  border-bottom: 1px solid black;
+  outline: none;
+  > span {
+    font-weight: bold;
+  }
+}
