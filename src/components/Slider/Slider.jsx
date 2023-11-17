@@ -58,7 +58,7 @@ export const Category = () => {
               <div className="boxs" key={item.id}>
                 <div className="box" >
                   <Link to={`/?cat=${item.category}`}>
-                    <img src={item.cover} alt="cover" />
+                    <img loading={"lazy"} src={item.cover} alt="cover" />
                     <div className="overlay">
                       <h4>{item.category}</h4>
                       <p>{item.title}</p>
