@@ -10,7 +10,7 @@ export const serverpost = "http://localhost:3000/api/v-1/post";
 const Appwrapper = () => {
   const [isAuthenticated, setisAuthenticated] = useState(false);
   const [user, setuser] = useState("");
-  const [reload, setreload] = useState("");
+  const [reload, setreload] = useState(false);
   return (
     <Context.Provider
       value={{

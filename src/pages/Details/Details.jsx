@@ -1,18 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../Details/Details.scss";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { server, serverpost } from "../../main";
 import toast from "react-hot-toast";
+import { Context, serverpost, server } from "../../main";
 
 const Details = () => {
+  const { user } = useContext(Context);
   const { id } = useParams();
   const navigate = useNavigate();
   const [post, setpost] = useState(null);
   const [edit, setedit] = useState(false);
   const [title, settitle] = useState("");
   const [desc, setdesc] = useState("");
-  const userkey = localStorage.getItem("userkey");
   const PF = "http://localhost:3000/images/";
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const Details = () => {
         {post && <img src={PF + post.photo} alt="" style={{ width: "100%" }} />}{" "}
         <h2>
           {!edit && post && <>Title : {post.title}</>}
-          {post && userkey == post.username && (
+          {post && user == post.username && (
             <>
               {edit ? (
                 <>

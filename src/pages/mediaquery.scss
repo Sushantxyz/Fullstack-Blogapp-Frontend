@@ -13,6 +13,14 @@
   .BlogCard {
     width: 45vmax;
   }
+  .profile-details {
+    right: 4vw;
+  }
+  .container {
+    > nav ul {
+      padding: 0 0vmax;
+    }
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -38,7 +46,5 @@
     form {
       width: 80%;
     }
-  }
-  .update {
   }
 }

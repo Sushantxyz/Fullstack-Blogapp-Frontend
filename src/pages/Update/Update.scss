@@ -1,41 +1,61 @@
+%general {
+  font-size: 1rem;
+  font-family: "Raleway", sans-serif;
+  width: 15rem;
+  margin: 1rem;
+  outline: none;
+  border: none;
+  padding-inline: 0.5rem;
+  padding-block: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px black;
+}
+
+@mixin flex ($display){
+  display: flex;
+  flex-direction: $display;
+  justify-content: center;
+  align-items: center;
+}
+
 .update {
   width: 100%;
   height: calc(100vh - 6rem);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(row);
 
   form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  @include flex(column);
+  
     min-height: 40%;
     min-width: 50%;
     box-shadow: 0px 2px 4px gray;
     border-radius: 20px;
     padding: 2rem;
     label {
-      font: 500 1.5rem "Raleway";
-      font-family: "Popins", sans-serif;
-      width: 15rem;
-      margin: 1rem;
-      padding-inline: 0.5rem;
-      outline: none;
-      font-size: 1rem;
-      border: none;
+      @extend %general;
+      padding-inline: 0;
+      padding-block: 0;
+      border-radius: 0;
+      box-shadow: none;
+      font: 100 1rem sans-serif;
+      letter-spacing: 0.01rem;
     }
     input {
-      padding-block: 1rem;
-      border-radius: 10px;
-      box-shadow: 0px 0px 4px black;
-      font-family: "Raleway", sans-serif;
-      width: 15rem;
-      margin: 1rem;
-      padding-inline: 0.5rem;
-      outline: none;
-      font-size: 1rem;
-      border: none;
+      @extend %general;
+    }
+    button {
+      @extend %general;
+      font: 100 1.1rem sans-serif;
+      letter-spacing: 0.01rem;
+      box-shadow: none;
+      font-family: sans-serif;
+      color: white;
+      background-color: rgb(39, 125, 39);
+      cursor: pointer;
+      transition: 0.3s ease;
+      &:hover {
+        background-color: rgb(15, 103, 15);
+      }
     }
   }
 }

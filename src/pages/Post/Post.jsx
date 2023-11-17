@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./post.scss";
-import img1 from "../../assets/img4.webp";
 import axios from "axios";
-import { server, serverpost } from "../../main";
+import { Context, server, serverpost } from "../../main";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -11,12 +10,15 @@ const Post = () => {
   const [description, setdescription] = useState("");
   const [file, setfile] = useState(null);
   const navigate = useNavigate();
-  const userkey = localStorage.getItem("userkey");
+  // const userkey = localStorage.getItem("userkey");
+  const { user } = useContext(Context);
 
   function submithandler(e) {
     e.preventDefault();
+
+
     const newPost = {
-      username: userkey,
+      username: user,
       title,
       description,
     };
@@ -42,7 +44,7 @@ const Post = () => {
         navigate(`/${data.data.id}`);
       })
       .catch((error) => {
-        toast.error("make sure contain is unique ....");
+        toast.error("make sure contain is unique !!");
       });
   }
 

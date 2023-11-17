@@ -7,11 +7,11 @@ const BlogCard = ({post}) => {
   return (
     <>
       <div className="BlogCard">
-        <img src={PF + post.photo} alt="" />
+        <img loading="lazy" src={PF + post.photo} alt="" />
         <b>Title : {post.title}</b>
         <span><span>Posted on :</span> {(post.createdAt).split("T")[0]}</span>
         <p>
-          Description : {(post.description).slice(0,250)}...
+          Description : {(post.description).slice(0,150)}...
         </p>
       </div>
     </>

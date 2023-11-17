@@ -1,15 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "../Login/Login.scss";
 import axios from "axios";
 import { Context, server } from "../../main.jsx";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const { user, setuser, isAuthenticated, setisAuthenticated } =
-    useContext(Context);
   const [logindata, setlogindata] = useState({ username: "", password: "" });
+
+  const { isAuthenticated, setisAuthenticated, setreload } =
+    useContext(Context);
+
   const handlechange = (e) => {
     setlogindata((prev) => ({
       ...prev,
@@ -32,13 +33,15 @@ const Login = () => {
       )
       .then((data) => {
         setisAuthenticated(true);
-        navigate("/");
+        setreload((prev) => !prev);
+        <Navigate to={"/"} />;
       })
       .catch((error) => {
         toast.error(error.response.data.message);
       });
     setlogindata({ username: "", password: "" });
   }
+
   return (
     <>
       <div className="login">
@@ -68,4 +71,3 @@ const Login = () => {
 
 export default Login;
 
-// onClick={()=>{variable(true)}}

@@ -1,24 +1,24 @@
 import "./App.css";
-import Home from "./pages/Home/Home";
-import Header from "./components/header/Header";
-import Details from "./pages/Details/Details";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
-import Post from "./pages/Post/Post";
-import Update from "./pages/Update/Update";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
-import "./pages/mediaquery.scss";
 import axios from "axios";
 import { Context, server } from "./main";
+import Header from "./components/header/Header";
+const Home = lazy(() => import("./pages/Home/Home"));
+const Details = lazy(() => import("./pages/Details/Details"));
+const Login = lazy(() => import("./pages/Login/Login"));
+const Register = lazy(() => import("./pages/Register/Register"));
+const Post = lazy(() => import("./pages/Post/Post"));
+const Update = lazy(() => import("./pages/Update/Update"));
+import "./pages/mediaquery.scss";
 
 function App() {
   const [loading, setloading] = useState(true);
-  const { isAuthenticated, user, setuser, setisAuthenticated } =
+
+  const { isAuthenticated, user, setuser, setisAuthenticated, reload } =
     useContext(Context);
 
-  // console.log(isAuthenticated); this is a bug when reload this is false hence login route is displayed everytime.
   useEffect(() => {
     setloading(true);
     axios
@@ -29,22 +29,21 @@ function App() {
         setuser(data.data._user.username);
       })
       .catch((error) => {
-        // console.error(error.response);
         setloading(false);
         setisAuthenticated(false);
       });
-  }, []);
+  }, [reload]);
 
-  if (loading){
-    return
+  if (loading) {
+    return <h1>Loading...</h1>;
   }
 
   return (
     <>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <>
+        <Suspense fallback={<h2>Loading ....</h2>}>
+          <Routes>
             {isAuthenticated ? (
               <>
                 <Route path="/" element={<Home />} />
@@ -60,8 +59,8 @@ function App() {
                 <Route path="/register" element={<Register />} />
               </>
             )}
-          </>
-        </Routes>
+          </Routes>
+        </Suspense>
         <Toaster />
       </BrowserRouter>
     </>
@@ -69,18 +68,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <Route path="/" element={<Home />} />
-<Route
-  path="/register"
-  element={isAuthenticated ? <Home /> : <Register />}
-/>
-<Route
-  path="/login"
-  element={isAuthenticated ? <Home /> : <Login />}
-/>
-<Route path="/post" element={<Post />} />
-<Route path="/update" element={<Update />} />
-<Route path="/:id" element={<Details />} /> */
-}

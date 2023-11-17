@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogCard from "../../components/BlogCard/BlogCard";
 import axios from "axios";
 import "../../pages/Home/Home.scss";
 import { Link, useLocation } from "react-router-dom";
-import { Context, serverpost } from "../../main";
+import { serverpost } from "../../main";
 import { Category } from "../../components/Slider/Slider";
 
 const Home = () => {
-  const { user, setuser } = useContext(Context);
   const [posts, setposts] = useState([]);
 
   const location = useLocation();
+
   useEffect(() => {
     async function a() {
       try {

@@ -1,29 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Update/update.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { server } from "../../main";
 import toast from "react-hot-toast";
+import { Context, server } from "../../main";
+
 const Update = () => {
-  const [username, setusername] = useState("");
+  const [updatedusername, setupdatedusername] = useState("");
   const [password, setpassword] = useState("");
   const [file, setfile] = useState(null);
-  const [user, setuser] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    function a() {
-      axios.get(server + "/getuser", { withCredentials: true }).then((data) => {
-        setuser(data.data._user);
-      });
-    }
-    a();
-  }, []);
+  const { setreload } = useContext(Context);
 
   function submithandler(e) {
     e.preventDefault();
+
     const newPost = {
-      username,
+      updatedusername,
       password,
     };
     if (file) {
@@ -45,11 +38,12 @@ const Update = () => {
     axios
       .put(server + "/update", newPost, { withCredentials: true })
       .then((data) => {
+        setreload((prev) => !prev);
         navigate(`/`);
-        // window.location.reload();
       })
       .catch((error) => {
-        toast.error("Error updating file ....");
+        console.log(error.response);
+        toast.error(error.response.data.message);
       });
   }
   return (
@@ -66,13 +60,15 @@ const Update = () => {
           />
           <label>Update Username</label>
           <input
+            required
             type="text"
             className="updatetext"
             placeholder="Enter Username..."
-            onChange={(e) => setusername(e.target.value)}
+            onChange={(e) => setupdatedusername(e.target.value)}
           />
           <label>Update Password</label>
           <input
+            required
             type="password"
             className="updatetext"
             placeholder="Enter password..."

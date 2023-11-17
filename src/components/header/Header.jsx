@@ -1,36 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
-import "../header/Header.scss";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Context, server } from "../../main";
+import "../header/Header.scss";
 import toast from "react-hot-toast";
 
 const Header = () => {
   const navigate = useNavigate();
   const [openprofile, setopenprofile] = useState(false);
-  // const [user, setuser] = useState(false);
   const [userdata, setuserdata] = useState();
   const PF = "http://localhost:3000/images/";
-  const token = localStorage.getItem("loginkey");
-  const username = localStorage.getItem("userkey");
-  const { isAuthenticated, setisAuthenticated, user, setuser } =
-    useContext(Context);
+
+  const {
+    isAuthenticated,
+    setisAuthenticated,
+    user,
+    setuser,
+    reload,
+    setreload,
+  } = useContext(Context);
 
   useEffect(() => {
     if (isAuthenticated) {
-      // setuser(true);
       axios.get(server + "/getuser", { withCredentials: true }).then((data) => {
         setuserdata(data.data._user.profilepicture);
       });
     } else {
-      // navigate("/login");
+      navigate("/login");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, reload]); // need check
 
   function handleSignOut() {
     setopenprofile((prev) => !prev);
-    // localStorage.removeItem("loginkey");
-    // localStorage.removeItem("userkey");
 
     const data = axios
       .post(
@@ -41,27 +42,27 @@ const Header = () => {
         }
       )
       .then((data) => {
-        navigate("/login");
         setisAuthenticated(false);
+        setreload((prev) => !prev);
+        setuser("");
+        navigate("/login");
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error); //
         toast.error(error.response.data.message);
       });
   }
-
   return (
     <>
       <div className="container">
-        <div className="logo">Sundar Blog</div>
+        <div className="logo">
+          Sundar Blog
+        </div>
 
         {isAuthenticated && (
           <nav className="generalnav">
             <ul>
-              <Link
-                to={isAuthenticated ? "/" : "/login"}
-                style={{ textDecoration: "none" }}
-              >
+              <Link to={"/"} style={{ textDecoration: "none" }}>
                 Home
               </Link>
             </ul>
@@ -69,7 +70,7 @@ const Header = () => {
             <ul>Contact Us</ul>
             <ul>
               <Link
-                to={isAuthenticated ? `/?username=${username}` : "/login"}
+                to={`/?username=${user}`}
                 style={{ textDecoration: "none" }}
               >
                 My Pages
@@ -170,7 +171,7 @@ const Header = () => {
               >
                 <i className="fa-solid fa-file-circle-plus"></i>
                 <Link
-                  to={isAuthenticated ? `/?username=${username}` : "/login"}
+                  to={isAuthenticated ? `/?username=${user}` : "/login"}
                   style={{ textDecoration: "none" }}
                 >
                   My Pages

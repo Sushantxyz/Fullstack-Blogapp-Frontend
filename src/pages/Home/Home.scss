@@ -2,22 +2,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 2rem 1rem;
-}
-
-.HomePage-section1 {
-  h1 {
-    text-align: center;
-    z-index: 5;
-    font-size: 5rem;
-    font-family: "Lugrasimo", cursive;
-    padding-top: 1rem;
-  }
-  img {
-    padding: 1rem;
-    width: 100%;
-    position: relative;
-    top: -2rem;
-    z-index: -1;
-  }
+  padding: 2rem 0rem; //
 }
