@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import "../Update/update.scss";
+import React, { useContext, useState } from "react";
+import "../Update/Update.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
