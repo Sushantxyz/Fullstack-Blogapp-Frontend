@@ -4,8 +4,8 @@ import App from "./App.jsx";
 import "./index.css";
 
 export const Context = createContext({ isAuthenticated: false });
-export const server = "http://localhost:3000/api/v-1";
-export const serverpost = "http://localhost:3000/api/v-1/post";
+export const server = "https://blogapp-backend-sj5x.onrender.com";
+export const serverpost = "https://blogapp-backend-sj5x.onrender.com/post";
 
 const Appwrapper = () => {
   const [isAuthenticated, setisAuthenticated] = useState(false);
