@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import "./post.scss";
+import "./Post.scss";
 import axios from "axios";
 import { Context, server, serverpost } from "../../main";
 import { useNavigate } from "react-router-dom";
