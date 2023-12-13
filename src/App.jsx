@@ -4,20 +4,20 @@ import { useContext, useEffect, useState, lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { Context, server } from "./main";
-import Header from "./components/header/Header";
-import Home from "./pages/Home/Home";
-import Details from "./pages/Details/Details";
-import Login from "./pages/Login/Login";
-import Post from "./pages/Post/Post";
-import Register from "./pages/Register/Register";
-import Update from "./pages/Update/Update";
+// import Header from "./components/header/Header";
+// import Home from "./pages/Home/Home";
+// import Details from "./pages/Details/Details";
+// import Login from "./pages/Login/Login";
+// import Post from "./pages/Post/Post";
+// import Register from "./pages/Register/Register";
+// import Update from "./pages/Update/Update";
 
-// const Home = lazy(() => import("./pages/Home/Home"));
-// const Details = lazy(() => import("./pages/Details/Details"));
-// const Login = lazy(() => import("./pages/Login/Login"));
-// const Register = lazy(() => import("./pages/Register/Register"));
-// const Post = lazy(() => import("./pages/Post/Post.jsx"));
-// const Update = lazy(() => import("./pages/Update/Update"));
+const Home = lazy(() => import("./pages/Home/Home"));
+const Details = lazy(() => import("./pages/Details/Details"));
+const Login = lazy(() => import("./pages/Login/Login"));
+const Register = lazy(() => import("./pages/Register/Register"));
+const Post = lazy(() => import("./pages/Post/Post.jsx"));
+const Update = lazy(() => import("./pages/Update/Update"));
 import "./pages/mediaquery.scss";
 
 function App() {
@@ -49,7 +49,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        {/* <Suspense fallback={<h2>Loading ....</h2>}> */}
+        <Suspense fallback={<h2>Loading ....</h2>}>
         <Routes>
           {isAuthenticated ? (
             <>
@@ -63,12 +63,12 @@ function App() {
           ) : (
             <>
               <Route path="/login" element={<Login />} />
-              <Route path="/*" element={<Login />} />
+              {/* <Route path="/*" element={<Login />} /> */}
               <Route path="/register" element={<Register />} />
             </>
           )}
         </Routes>
-        {/* </Suspense> */}
+        </Suspense>
         <Toaster />
       </BrowserRouter>
     </>
