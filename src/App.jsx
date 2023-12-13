@@ -5,12 +5,19 @@ import { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { Context, server } from "./main";
 import Header from "./components/header/Header";
-const Home = lazy(() => import("./pages/Home/Home"));
-const Details = lazy(() => import("./pages/Details/Details"));
-const Login = lazy(() => import("./pages/Login/Login"));
-const Register = lazy(() => import("./pages/Register/Register"));
-const Post = lazy(() => import("./pages/Post/Post"));
-const Update = lazy(() => import("./pages/Update/Update"));
+import Home from "./pages/Home/Home";
+import Details from "./pages/Details/Details";
+import Login from "./pages/Login/Login";
+import Post from "./pages/Post/Post";
+import Register from "./pages/Register/Register";
+import Update from "./pages/Update/Update";
+
+// const Home = lazy(() => import("./pages/Home/Home"));
+// const Details = lazy(() => import("./pages/Details/Details"));
+// const Login = lazy(() => import("./pages/Login/Login"));
+// const Register = lazy(() => import("./pages/Register/Register"));
+// const Post = lazy(() => import("./pages/Post/Post.jsx"));
+// const Update = lazy(() => import("./pages/Update/Update"));
 import "./pages/mediaquery.scss";
 
 function App() {
@@ -42,26 +49,26 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <Suspense fallback={<h2>Loading ....</h2>}>
-          <Routes>
-            {isAuthenticated ? (
-              <>
-                <Route path="/" element={<Home />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/post" element={<Post />} />
-                <Route path="/update" element={<Update />} />
-                <Route path="/:id" element={<Details />} />
-              </>
-            ) : (
-              <>
-                <Route path="/login" element={<Login />} />
-                <Route path="/*" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-              </>
-            )}
-          </Routes>
-        </Suspense>
+        {/* <Suspense fallback={<h2>Loading ....</h2>}> */}
+        <Routes>
+          {isAuthenticated ? (
+            <>
+              <Route path="/" element={<Home />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/post" element={<Post />} />
+              <Route path="/update" element={<Update />} />
+              <Route path="/:id" element={<Details />} />
+            </>
+          ) : (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/*" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </>
+          )}
+        </Routes>
+        {/* </Suspense> */}
         <Toaster />
       </BrowserRouter>
     </>
