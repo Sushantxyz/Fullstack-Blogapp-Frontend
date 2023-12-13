@@ -1,6 +1,5 @@
 import React from "react";
 import "../BlogCard/BlogCard.scss";
-import { Link, useNavigate } from "react-router-dom";
 
 const BlogCard = ({ post }) => {
   const PF = "https://blogapp-backend-sj5x.onrender.com/images/";
