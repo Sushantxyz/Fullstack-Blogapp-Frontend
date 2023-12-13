@@ -4,7 +4,7 @@ import { useContext, useEffect, useState, lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { Context, server } from "./main";
-// import Header from "./components/header/Header";
+import Header from "./components/header/Header";
 // import Home from "./pages/Home/Home";
 // import Details from "./pages/Details/Details";
 // import Login from "./pages/Login/Login";
