@@ -9,7 +9,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [openprofile, setopenprofile] = useState(false);
   const [userdata, setuserdata] = useState();
-  const PF = "http://localhost:3000/images/";
+  const PF = "https://blogapp-backend-sj5x.onrender.com/images/";
 
   const {
     isAuthenticated,

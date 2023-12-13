@@ -10,7 +10,6 @@ const Post = () => {
   const [description, setdescription] = useState("");
   const [file, setfile] = useState(null);
   const navigate = useNavigate();
-  // const userkey = localStorage.getItem("userkey");
   const { user } = useContext(Context);
 
   function submithandler(e) {

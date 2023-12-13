@@ -13,7 +13,7 @@ const Details = () => {
   const [edit, setedit] = useState(false);
   const [title, settitle] = useState("");
   const [desc, setdesc] = useState("");
-  const PF = "http://localhost:3000/images/";
+  const PF = "https://blogapp-backend-sj5x.onrender.com/images/";//
 
   useEffect(() => {
     async function a() {

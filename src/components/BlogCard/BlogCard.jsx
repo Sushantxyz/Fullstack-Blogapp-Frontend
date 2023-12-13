@@ -2,17 +2,17 @@ import React from "react";
 import "../BlogCard/BlogCard.scss";
 import { Link, useNavigate } from "react-router-dom";
 
-const BlogCard = ({post}) => {
-  const PF = "http://localhost:3000/images/";
+const BlogCard = ({ post }) => {
+  const PF = "https://blogapp-backend-sj5x.onrender.com/images/";
   return (
     <>
       <div className="BlogCard">
         <img loading="lazy" src={PF + post.photo} alt="" />
         <b>Title : {post.title}</b>
-        <span><span>Posted on :</span> {(post.createdAt).split("T")[0]}</span>
-        <p>
-          Description : {(post.description).slice(0,150)}...
-        </p>
+        <span>
+          <span>Posted on :</span> {post.createdAt.split("T")[0]}
+        </span>
+        <p>Description : {post.description.slice(0, 150)}...</p>
       </div>
     </>
   );

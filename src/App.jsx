@@ -16,7 +16,7 @@ import "./pages/mediaquery.scss";
 function App() {
   const [loading, setloading] = useState(true);
 
-  const { isAuthenticated, user, setuser, setisAuthenticated, reload } =
+  const { isAuthenticated, setuser, setisAuthenticated, reload } =
     useContext(Context);
 
   useEffect(() => {
@@ -55,6 +55,7 @@ function App() {
               </>
             ) : (
               <>
+                <Route path="/login" element={<Login />} />
                 <Route path="/*" element={<Login />} />
                 <Route path="/register" element={<Register />} />
               </>
