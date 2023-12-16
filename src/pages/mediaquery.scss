@@ -1,6 +1,6 @@
 @media screen and (max-width: 810px) {
   .generalnav {
-    visibility: hidden;
+    display: none !important;
     width: 15%;
   }
   .container {
@@ -28,7 +28,7 @@
     max-width: 100%;
   }
   .BlogCard {
-    width: 100%;
+    width: 42vmax !important;
   }
   .Blog-Details {
     img {
