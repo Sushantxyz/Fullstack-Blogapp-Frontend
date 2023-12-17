@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Context, serverpost, server } from "../../main";
+import { category } from "../../assets/data/data";
 
 const Details = () => {
   const { user } = useContext(Context);
@@ -13,7 +14,7 @@ const Details = () => {
   const [edit, setedit] = useState(false);
   const [title, settitle] = useState("");
   const [desc, setdesc] = useState("");
-  const PF = "https://blogapp-backend-sj5x.onrender.com/images/";//
+  const PF = "https://blogapp-backend-sj5x.onrender.com/images/"; //
 
   useEffect(() => {
     async function a() {
@@ -113,8 +114,16 @@ const Details = () => {
             )}
             <p className="auth">
               Auth :{" "}
-              <Link to={`/?username=${post.username}`}>{post.username}</Link>
+              <Link className="cat" to={`/?username=${post.username}`}>{post.username}</Link>
             </p>
+
+            <div className="cat">
+              Category :{" "}
+              {category &&
+                post.category.map((data) => (
+                  <span onClick={() => navigate("/?cat=" + data)}>{data}</span>
+                ))}
+            </div>
 
             <p className="posttime">
               Posted on : {post.createdAt.split("T")[0]}

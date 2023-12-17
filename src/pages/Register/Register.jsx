@@ -61,7 +61,7 @@ const Register = () => {
   return (
     <div className="Register">
       <form className="Registerform" onSubmit={handlesubmit} method="post">
-        <label htmlFor="">Username</label>
+        <label htmlFor="username">Username</label>
         <input
           type="text"
           placeholder="Enter Username..."
@@ -69,7 +69,7 @@ const Register = () => {
           name="username"
           value={registerdata.username}
         />
-        <label htmlFor="">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           placeholder="Enter Email..."
@@ -77,7 +77,7 @@ const Register = () => {
           name="email"
           value={registerdata.email}
         />
-        <label htmlFor="">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           placeholder="Enter Password..."
@@ -86,8 +86,20 @@ const Register = () => {
           value={registerdata.password}
         />
         {!strongpassword && (
-          <div style={{marginLeft:"auto",color:"red",paddingRight:"1rem",fontSize:"1rem",marginBlock:"0.5rem"}} >
+          <div
+            style={{
+              position:"relative",
+              marginLeft: "auto",
+              color: "red",
+              paddingRight: "1rem",
+              fontSize: "0.8rem",
+              marginBlock: "0.5rem",
+            }}
+          >
             <p>Enter Strong password !!</p>
+            <p>Atleast 8 Characters required,</p>
+            <p>with special symbols and</p>
+            <p>numbers!!!</p>
           </div>
         )}
         <button disabled={!strongpassword}>Register</button>

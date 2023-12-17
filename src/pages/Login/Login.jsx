@@ -2,11 +2,13 @@ import React, { useContext, useState } from "react";
 import "../Login/Login.scss";
 import axios from "axios";
 import { Context, server } from "../../main.jsx";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const [logindata, setlogindata] = useState({ username: "", password: "" });
+
+  const navigate = useNavigate();
 
   const { isAuthenticated, setisAuthenticated, setreload } =
     useContext(Context);
@@ -18,8 +20,7 @@ const Login = () => {
     }));
   };
 
-  if (isAuthenticated) return <Navigate to={"/"} />;
-  
+  if (isAuthenticated) return navigate("/");
   function handlesubmit(e) {
     e.preventDefault();
     axios
@@ -34,7 +35,7 @@ const Login = () => {
       .then((data) => {
         setisAuthenticated(true);
         setreload((prev) => !prev);
-        <Navigate to={"/"} />;
+        navigate("/");
       })
       .catch((error) => {
         toast.error(error.response.data.message);
@@ -46,7 +47,7 @@ const Login = () => {
     <>
       <div className="login">
         <form className="loginform" onSubmit={handlesubmit} method="post">
-          <label htmlFor="">Username</label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             value={logindata.username}
@@ -54,7 +55,7 @@ const Login = () => {
             placeholder="Enter Username..."
             onChange={(e) => handlechange(e)}
           />
-          <label htmlFor="">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             value={logindata.password}
@@ -70,4 +71,3 @@ const Login = () => {
 };
 
 export default Login;
-

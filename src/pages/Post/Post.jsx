@@ -1,25 +1,35 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Post.scss";
 import axios from "axios";
 import { Context, server, serverpost } from "../../main";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { category } from "../../assets/data/data.js";
 
 const Post = () => {
   const [title, settitle] = useState("");
   const [description, setdescription] = useState("");
   const [file, setfile] = useState(null);
+  const [cat, setcat] = useState([]);
   const navigate = useNavigate();
   const { user } = useContext(Context);
 
+  function displaycategory(catdata) {
+    if (cat.includes(catdata)) {
+      setcat((prev) => prev.filter((c) => c !== catdata));
+    } else {
+      setcat((prev) => [...prev, catdata]);
+    }
+  }
+
   function submithandler(e) {
     e.preventDefault();
-
 
     const newPost = {
       username: user,
       title,
       description,
+      category: cat,
     };
 
     if (file) {
@@ -50,15 +60,28 @@ const Post = () => {
   return (
     <>
       <div className="post">
-        <div className="postimg">
+        <div className={file && "postimg"} >
           {file && <img src={URL.createObjectURL(file)} alt="" />}
         </div>
 
-        <form action="" onSubmit={submithandler}>
+        <form onSubmit={submithandler}>
           <label htmlFor="fileimg">
             <i className="fa-solid fa-circle-plus"></i>
             {file ? file.name : " Upload Image"}
           </label>
+
+          <div>
+            Categories :
+            {category.map((data, index) => (
+              <span
+                key={index}
+                className={cat.includes(data.category) ? "selected" : ""}
+                onClick={(e) => displaycategory(data.category)}
+              >
+                {data.category}
+              </span>
+            ))}
+          </div>
 
           <input
             type="file"

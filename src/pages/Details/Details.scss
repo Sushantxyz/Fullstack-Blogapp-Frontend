@@ -1,3 +1,12 @@
+%general {
+  cursor: pointer;
+  padding-block: 0.3rem;
+  box-shadow: 0px 0px 4px black;
+  border-radius: 5px;
+  font: 500 1rem "san-serif";
+  width: 100%;
+}
+
 .Blog-Details {
   display: flex;
   flex-direction: column;
@@ -8,11 +17,11 @@
     object-fit: contain;
     box-shadow: 1px 1px 4px rgb(89, 89, 89);
   }
-  p {
+  >p {
     padding: 0.5rem;
     > span {
-      font-family: "Popins", sans-serif;
-      text-decoration:underline;
+      font:600 1rem "Popins", sans-serif;
+      padding-inline: 0.2rem;
     }
   }
   h2 {
@@ -25,6 +34,7 @@
       background-color: white;
       font-size: 1.5rem;
       cursor: pointer;
+      
     }
   }
 }
@@ -50,7 +60,7 @@
   width: 100%;
   padding: 0.8rem;
   font-size: 1rem;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   color: white;
   background-color: rgb(39, 125, 39);
   outline: none;
@@ -83,5 +93,18 @@
   outline: none;
   > span {
     font-weight: bold;
+  }
+}
+
+.cat {
+  margin-left: 0.5rem;
+  margin-block:0.5rem;
+  font:600 0.9rem sans-serif;
+  > span {
+    @extend %general;
+    margin-inline: 0.5rem;
+    padding-inline: 0.5rem;
+    background-color: white;
+    width: fit-content;
   }
 }

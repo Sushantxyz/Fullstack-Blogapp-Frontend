@@ -55,7 +55,7 @@ const Header = () => {
   return (
     <>
       <div className="container">
-        <div className="logo">
+        <div className="logo" onClick={()=>navigate("/")} >
           Sundar Blog
         </div>
 

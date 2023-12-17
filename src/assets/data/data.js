@@ -1,11 +1,11 @@
-// import "./../"
+
 
 export const category = [
   {
     id: 1,
-    category: "Life",
-    title: "Stay Calm And Surf",
-    cover: "../images/category/life.webp",
+    category: "Technology",
+    title: "There's always light at the end of the tunnel",
+    cover: "../images/category/technology.jpg",
   },
   {
     id: 2,
@@ -45,8 +45,8 @@ export const category = [
   },
   {
     id: 8,
-    category: "Technology",
-    title: "There's always light at the end of the tunnel",
-    cover: "../images/category/technology.jpg",
+    category: "Life",
+    title: "Stay Calm And Surf",
+    cover: "../images/category/life.webp",
   },
 ]

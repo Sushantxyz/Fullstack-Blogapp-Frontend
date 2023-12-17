@@ -49,7 +49,7 @@ const Update = () => {
   return (
     <>
       <div className="update">
-        <form action="" onSubmit={submithandler}>
+        <form onSubmit={submithandler}>
           <label id="updateimg">
             <i className="fa-solid fa-circle-plus"></i> Update Image
           </label>

@@ -38,13 +38,15 @@
     }
   }
   .post {
-    height: 87vh;
-    max-width: 100%;
-    align-items: center;
-    justify-content: center;
-    min-width: none;
     form {
-      width: 80%;
+      > div > span {
+        max-width: fit-content !important;
+      }
+    }
+  }
+  .postimg {
+    img {
+      max-height: 30vh ;
     }
   }
 }
