@@ -3,8 +3,12 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
 export const Context = createContext({ isAuthenticated: false });
-export const server = "https://blogapp-backend-sj5x.onrender.com/api/v-1";
-export const serverpost = "https://blogapp-backend-sj5x.onrender.com/api/v-1/post";
+// export const server = "https://blogapp-backend-sj5x.onrender.com/api/v-1";
+// export const serverpost = "https://blogapp-backend-sj5x.onrender.com/api/v-1/post";
+export const serverpost = "http://localhost:3000/api/v-1/post";
+export const server = "http://localhost:3000/api/v-1";
+
+
 
 const Appwrapper = () => {
   const [isAuthenticated, setisAuthenticated] = useState(false);

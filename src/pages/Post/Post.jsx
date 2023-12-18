@@ -10,6 +10,8 @@ const Post = () => {
   const [title, settitle] = useState("");
   const [description, setdescription] = useState("");
   const [file, setfile] = useState(null);
+  const [image, setimage] = useState(null);
+
   const [cat, setcat] = useState([]);
   const navigate = useNavigate();
   const { user } = useContext(Context);
@@ -22,7 +24,21 @@ const Post = () => {
     }
   }
 
-  function submithandler(e) {
+  function handlechange(file) {
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setimage(reader.result);
+      };
+    }
+  }
+
+  useEffect(() => {
+    handlechange(file);
+  }, [file]);
+
+  async function submithandler(e) {
     e.preventDefault();
 
     const newPost = {
@@ -30,22 +46,9 @@ const Post = () => {
       title,
       description,
       category: cat,
+      photo: image,
     };
 
-    if (file) {
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      newPost.photo = filename;
-
-      axios
-        .post(server + "/upload", data, { withCredentials: true })
-        .then((data) => {})
-        .catch((error) => {
-          toast.error("Error updating file ....");
-        });
-    }
     axios
       .post(serverpost + "/create", newPost, { withCredentials: true })
       .then((data) => {
@@ -60,11 +63,11 @@ const Post = () => {
   return (
     <>
       <div className="post">
-        <div className={file && "postimg"} >
-          {file && <img src={URL.createObjectURL(file)} alt="" />}
+        <div className={image && "postimg"}>
+          {image && <img src={image} alt="" />}
         </div>
 
-        <form onSubmit={submithandler}>
+        <form onSubmit={(e) => submithandler(e)}>
           <label htmlFor="fileimg">
             <i className="fa-solid fa-circle-plus"></i>
             {file ? file.name : " Upload Image"}

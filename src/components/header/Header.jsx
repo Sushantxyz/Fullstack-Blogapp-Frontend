@@ -23,7 +23,8 @@ const Header = () => {
   useEffect(() => {
     if (isAuthenticated) {
       axios.get(server + "/getuser", { withCredentials: true }).then((data) => {
-        setuserdata(data.data._user.profilepicture);
+        console.log(data.data._user);
+        setuserdata(data.data._user.profilepicture.url);
       });
     } else {
       navigate("/login");
@@ -48,7 +49,6 @@ const Header = () => {
         navigate("/login");
       })
       .catch((error) => {
-        console.log(error); //
         toast.error(error.response.data.message);
       });
   }
@@ -111,7 +111,7 @@ const Header = () => {
                     style={{ paddingInline: "0.2rem" }}
                   ></i>
                 ) : (
-                  <img src={PF + userdata} />
+                  <img src={userdata} />
                 )}
                 <i className="fa-solid fa-magnifying-glass"></i>{" "}
               </div>
@@ -123,7 +123,7 @@ const Header = () => {
                     style={{ paddingInline: "0.2rem" }}
                   ></i>
                 ) : (
-                  <img src={PF + userdata} />
+                  <img src={userdata} />
                 )}
                 <i className="fa-solid fa-magnifying-glass"></i>{" "}
               </div>

@@ -14,7 +14,6 @@ const Details = () => {
   const [edit, setedit] = useState(false);
   const [title, settitle] = useState("");
   const [desc, setdesc] = useState("");
-  const PF = "https://blogapp-backend-sj5x.onrender.com/images/"; //
 
   useEffect(() => {
     async function a() {
@@ -65,7 +64,7 @@ const Details = () => {
   return (
     <>
       <div className="Blog-Details">
-        {post && <img src={PF + post.photo} alt="" style={{ width: "100%" }} />}{" "}
+        {post && <img src={post.photo.url} alt="" style={{ width: "100%" }} />}{" "}
         <h2>
           {!edit && post && <>Title : {post.title}</>}
           {post && user == post.username && (
@@ -114,14 +113,18 @@ const Details = () => {
             )}
             <p className="auth">
               Auth :{" "}
-              <Link className="cat" to={`/?username=${post.username}`}>{post.username}</Link>
+              <Link className="cat" to={`/?username=${post.username}`}>
+                {post.username}
+              </Link>
             </p>
 
             <div className="cat">
               Category :{" "}
               {category &&
-                post.category.map((data) => (
-                  <span onClick={() => navigate("/?cat=" + data)}>{data}</span>
+                post.category.map((data, index) => (
+                  <span key={index} onClick={() => navigate("/?cat=" + data)}>
+                    {data}
+                  </span>
                 ))}
             </div>
 

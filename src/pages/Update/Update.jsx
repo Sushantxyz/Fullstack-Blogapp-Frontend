@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Update/Update.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,8 +9,23 @@ const Update = () => {
   const [updatedusername, setupdatedusername] = useState("");
   const [password, setpassword] = useState("");
   const [file, setfile] = useState(null);
+  const [image, setimage] = useState(null);
   const navigate = useNavigate();
   const { setreload } = useContext(Context);
+
+  function handlechange(file) {
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setimage(reader.result);
+      };
+    }
+  }
+
+  useEffect(() => {
+    handlechange(file);
+  }, [file]);
 
   function submithandler(e) {
     e.preventDefault();
@@ -18,23 +33,9 @@ const Update = () => {
     const newPost = {
       updatedusername,
       password,
+      profilepicture: image,
     };
-    if (file) {
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      newPost.profilepicture = filename;
 
-      axios
-        .post(server + "/upload", data, { withCredentials: true })
-        .then(() => {
-          toast.success("Updated successsfull !!");
-        })
-        .catch((error) => {
-          toast.error("Error while uploading file ...");
-        });
-    }
     axios
       .put(server + "/update", newPost, { withCredentials: true })
       .then((data) => {
