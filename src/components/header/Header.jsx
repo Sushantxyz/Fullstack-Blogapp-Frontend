@@ -23,7 +23,6 @@ const Header = () => {
   useEffect(() => {
     if (isAuthenticated) {
       axios.get(server + "/getuser", { withCredentials: true }).then((data) => {
-        console.log(data.data._user);
         setuserdata(data.data._user.profilepicture.url);
       });
     } else {
@@ -52,6 +51,7 @@ const Header = () => {
         toast.error(error.response.data.message);
       });
   }
+  
   return (
     <>
       <div className="container">

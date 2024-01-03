@@ -43,7 +43,6 @@ const Update = () => {
         navigate(`/`);
       })
       .catch((error) => {
-        console.log(error.response);
         toast.error(error.response.data.message);
       });
   }

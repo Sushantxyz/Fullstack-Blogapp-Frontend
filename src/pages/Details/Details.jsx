@@ -31,7 +31,6 @@ const Details = () => {
         withCredentials: true,
       })
       .then((data) => {
-        console.log(data);
         navigate("/");
       });
   }

@@ -5,6 +5,7 @@ import "../../pages/Home/Home.scss";
 import { Link, useLocation } from "react-router-dom";
 import { serverpost } from "../../main";
 import { Category } from "../../components/Slider/Slider";
+import toast from "react-hot-toast";
 
 const Home = () => {
   const [posts, setposts] = useState([]);
@@ -19,7 +20,7 @@ const Home = () => {
         });
         setposts(res.data.posts);
       } catch (error) {
-        console.log(error);
+        toast.error("Error loading post!! Please Refresh....")
       }
     }
     a();

@@ -15,9 +15,10 @@ import Header from "./components/header/Header";
 const Home = lazy(() => import("./pages/Home/Home"));
 const Details = lazy(() => import("./pages/Details/Details"));
 const Login = lazy(() => import("./pages/Login/Login"));
-const Register = lazy(() => import("./pages/Register/Register"));
 const Post = lazy(() => import("./pages/Post/Post.jsx"));
+const Register = lazy(() => import("./pages/Register/Register"));
 const Update = lazy(() => import("./pages/Update/Update"));
+
 import "./pages/mediaquery.scss";
 
 function App() {
