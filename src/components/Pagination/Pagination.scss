@@ -15,7 +15,7 @@ a {
 .pagination {
   padding: 1rem auto;
   height: 4rem;
-  @include Utilie.CustomFlex($justifyContent: center);
+  @include Utilie.CustomFlex($justifyContent: center, $alignItem: center);
   background-color: var(--bglight);
   color: var(--textdark);
   > span {

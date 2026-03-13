@@ -13,3 +13,8 @@ textarea {
   background-color: var(--button);
   color: var(--textdark);
 }
+
+#root{
+  background-color: var(--bglight);
+  height: 100vh;
+}
